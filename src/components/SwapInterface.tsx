@@ -10,17 +10,17 @@ const SwapInterface = () => {
   return (
     <div className="max-w-md mx-auto">
       <Tabs defaultValue="swap" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-6 bg-white/80 backdrop-blur-sm">
+        <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-800/80 backdrop-blur-sm border border-gray-700">
           <TabsTrigger 
             value="swap" 
-            className="flex items-center gap-2 data-[state=active]:bg-blue-500 data-[state=active]:text-white"
+            className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300"
           >
             <ArrowLeftRight size={16} />
             Swap
           </TabsTrigger>
           <TabsTrigger 
             value="liquidity" 
-            className="flex items-center gap-2 data-[state=active]:bg-blue-500 data-[state=active]:text-white"
+            className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white text-gray-300"
           >
             <Droplets size={16} />
             Liquidity

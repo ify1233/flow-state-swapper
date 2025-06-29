@@ -48,20 +48,20 @@ const TokenSelector = ({ selectedToken, onTokenSelect }: TokenSelectorProps) => 
       <DialogTrigger asChild>
         <Button 
           variant="ghost" 
-          className="h-auto p-2 gap-2 hover:bg-transparent"
+          className="h-auto p-2 gap-2 hover:bg-transparent text-white"
         >
           <span className="text-2xl">{selectedToken.icon}</span>
           <div className="text-left">
-            <div className="font-semibold text-gray-900">{selectedToken.symbol}</div>
-            <div className="text-xs text-gray-500">{selectedToken.name}</div>
+            <div className="font-semibold text-white">{selectedToken.symbol}</div>
+            <div className="text-xs text-gray-400">{selectedToken.name}</div>
           </div>
           <ChevronDown size={16} className="text-gray-400" />
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
         <DialogHeader>
-          <DialogTitle>Select a Token</DialogTitle>
+          <DialogTitle className="text-white">Select a Token</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-4">
@@ -71,7 +71,7 @@ const TokenSelector = ({ selectedToken, onTokenSelect }: TokenSelectorProps) => 
               placeholder="Search tokens..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
+              className="pl-10 bg-gray-700 border-gray-600 text-white placeholder-gray-400"
             />
           </div>
           
@@ -80,13 +80,13 @@ const TokenSelector = ({ selectedToken, onTokenSelect }: TokenSelectorProps) => 
               <Button
                 key={token.symbol}
                 variant="ghost"
-                className="w-full justify-start h-auto p-3 hover:bg-gray-50"
+                className="w-full justify-start h-auto p-3 hover:bg-gray-700 text-white"
                 onClick={() => handleTokenSelect(token)}
               >
                 <span className="text-2xl mr-3">{token.icon}</span>
                 <div className="text-left">
-                  <div className="font-semibold text-gray-900">{token.symbol}</div>
-                  <div className="text-sm text-gray-500">{token.name}</div>
+                  <div className="font-semibold text-white">{token.symbol}</div>
+                  <div className="text-sm text-gray-400">{token.name}</div>
                 </div>
               </Button>
             ))}

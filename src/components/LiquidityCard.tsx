@@ -50,19 +50,19 @@ const LiquidityCard = () => {
   };
 
   return (
-    <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
+    <Card className="bg-gray-800/90 backdrop-blur-sm border border-gray-700 shadow-xl">
       <CardHeader className="pb-4">
-        <h3 className="text-lg font-semibold text-gray-900">Liquidity Pools</h3>
+        <h3 className="text-lg font-semibold text-white">Liquidity Pools</h3>
       </CardHeader>
       
       <CardContent>
         <Tabs defaultValue="add" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-6">
-            <TabsTrigger value="add" className="flex items-center gap-2">
+          <TabsList className="grid w-full grid-cols-2 mb-6 bg-gray-700/50 border border-gray-600">
+            <TabsTrigger value="add" className="flex items-center gap-2 text-gray-300 data-[state=active]:text-white data-[state=active]:bg-gray-600">
               <Plus size={14} />
               Add
             </TabsTrigger>
-            <TabsTrigger value="remove" className="flex items-center gap-2">
+            <TabsTrigger value="remove" className="flex items-center gap-2 text-gray-300 data-[state=active]:text-white data-[state=active]:bg-gray-600">
               <Minus size={14} />
               Remove
             </TabsTrigger>
@@ -71,11 +71,11 @@ const LiquidityCard = () => {
           <TabsContent value="add" className="space-y-4">
             {/* Token A Input */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm text-gray-600">
+              <div className="flex items-center justify-between text-sm text-gray-400">
                 <span>Token A</span>
                 <span>Balance: 2.5482 {tokenA.symbol}</span>
               </div>
-              <div className="flex items-center space-x-2 bg-gray-50 rounded-xl p-3">
+              <div className="flex items-center space-x-2 bg-gray-700/50 rounded-xl p-3 border border-gray-600">
                 <TokenSelector 
                   selectedToken={tokenA} 
                   onTokenSelect={setTokenA}
@@ -84,7 +84,7 @@ const LiquidityCard = () => {
                   value={amountA}
                   onChange={(e) => handleAmountAChange(e.target.value)}
                   placeholder="0.0"
-                  className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0"
+                  className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0 text-white"
                   type="number"
                 />
               </div>
@@ -92,18 +92,18 @@ const LiquidityCard = () => {
 
             {/* Plus Icon */}
             <div className="flex justify-center">
-              <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <Plus size={16} className="text-gray-600" />
+              <div className="h-8 w-8 rounded-full bg-gray-700 border border-gray-600 flex items-center justify-center">
+                <Plus size={16} className="text-gray-400" />
               </div>
             </div>
 
             {/* Token B Input */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm text-gray-600">
+              <div className="flex items-center justify-between text-sm text-gray-400">
                 <span>Token B</span>
                 <span>Balance: 1,250.00 {tokenB.symbol}</span>
               </div>
-              <div className="flex items-center space-x-2 bg-gray-50 rounded-xl p-3">
+              <div className="flex items-center space-x-2 bg-gray-700/50 rounded-xl p-3 border border-gray-600">
                 <TokenSelector 
                   selectedToken={tokenB} 
                   onTokenSelect={setTokenB}
@@ -111,7 +111,7 @@ const LiquidityCard = () => {
                 <Input
                   value={amountB}
                   placeholder="0.0"
-                  className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0"
+                  className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0 text-white"
                   readOnly
                 />
               </div>
@@ -119,18 +119,18 @@ const LiquidityCard = () => {
 
             {/* Pool Info */}
             {amountA && amountB && (
-              <div className="bg-green-50 rounded-xl p-3 space-y-2 text-sm">
+              <div className="bg-green-900/30 rounded-xl p-3 space-y-2 text-sm border border-green-800/30">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Pool Share</span>
-                  <span>0.01%</span>
+                  <span className="text-gray-400">Pool Share</span>
+                  <span className="text-white">0.01%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">LP Tokens</span>
-                  <span>0.0158 ETH-USDC</span>
+                  <span className="text-gray-400">LP Tokens</span>
+                  <span className="text-white">0.0158 ETH-USDC</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Pool Ratio</span>
-                  <span>1 ETH = 2500 USDC</span>
+                  <span className="text-gray-400">Pool Ratio</span>
+                  <span className="text-white">1 ETH = 2500 USDC</span>
                 </div>
               </div>
             )}
@@ -146,17 +146,17 @@ const LiquidityCard = () => {
 
           <TabsContent value="remove" className="space-y-4">
             <div className="text-center py-8">
-              <div className="bg-gray-100 rounded-xl p-6 mb-4">
-                <h4 className="font-semibold mb-2">Your Liquidity Positions</h4>
+              <div className="bg-gray-700/30 rounded-xl p-6 mb-4 border border-gray-600">
+                <h4 className="font-semibold mb-2 text-white">Your Liquidity Positions</h4>
                 <div className="space-y-3">
-                  <div className="bg-white rounded-lg p-3 flex justify-between items-center">
+                  <div className="bg-gray-800 border border-gray-600 rounded-lg p-3 flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <span>⟠💵</span>
-                      <span className="font-medium">ETH-USDC</span>
+                      <span className="font-medium text-white">ETH-USDC</span>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold">$1,247.82</div>
-                      <div className="text-sm text-gray-600">0.0158 LP</div>
+                      <div className="font-semibold text-white">$1,247.82</div>
+                      <div className="text-sm text-gray-400">0.0158 LP</div>
                     </div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ const LiquidityCard = () => {
               <Button 
                 onClick={handleRemoveLiquidity}
                 variant="outline"
-                className="w-full h-12 text-lg font-semibold border-red-200 text-red-600 hover:bg-red-50"
+                className="w-full h-12 text-lg font-semibold border-red-500/50 text-red-400 hover:bg-red-900/20 hover:border-red-400"
               >
                 Remove Liquidity
               </Button>

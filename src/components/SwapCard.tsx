@@ -53,11 +53,11 @@ const SwapCard = () => {
   };
 
   return (
-    <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
+    <Card className="bg-gray-800/90 backdrop-blur-sm border border-gray-700 shadow-xl">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-gray-900">Swap Tokens</h3>
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+          <h3 className="text-lg font-semibold text-white">Swap Tokens</h3>
+          <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-gray-400 hover:text-white hover:bg-gray-700">
             <Settings size={16} />
           </Button>
         </div>
@@ -66,11 +66,11 @@ const SwapCard = () => {
       <CardContent className="space-y-4">
         {/* From Token */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-gray-600">
+          <div className="flex items-center justify-between text-sm text-gray-400">
             <span>From</span>
             <span>Balance: 2.5482 {fromToken.symbol}</span>
           </div>
-          <div className="flex items-center space-x-2 bg-gray-50 rounded-xl p-3">
+          <div className="flex items-center space-x-2 bg-gray-700/50 rounded-xl p-3 border border-gray-600">
             <TokenSelector 
               selectedToken={fromToken} 
               onTokenSelect={setFromToken}
@@ -79,7 +79,7 @@ const SwapCard = () => {
               value={fromAmount}
               onChange={(e) => handleFromAmountChange(e.target.value)}
               placeholder="0.0"
-              className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0"
+              className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0 text-white"
               type="number"
             />
           </div>
@@ -91,19 +91,19 @@ const SwapCard = () => {
             onClick={handleSwapTokens}
             variant="ghost"
             size="sm"
-            className="h-10 w-10 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
+            className="h-10 w-10 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors border border-blue-500/30"
           >
-            <ArrowUpDown size={16} className="text-blue-600" />
+            <ArrowUpDown size={16} className="text-blue-400" />
           </Button>
         </div>
 
         {/* To Token */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-gray-600">
+          <div className="flex items-center justify-between text-sm text-gray-400">
             <span>To</span>
             <span>Balance: 1,250.00 {toToken.symbol}</span>
           </div>
-          <div className="flex items-center space-x-2 bg-gray-50 rounded-xl p-3">
+          <div className="flex items-center space-x-2 bg-gray-700/50 rounded-xl p-3 border border-gray-600">
             <TokenSelector 
               selectedToken={toToken} 
               onTokenSelect={setToToken}
@@ -111,7 +111,7 @@ const SwapCard = () => {
             <Input
               value={toAmount}
               placeholder="0.0"
-              className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0"
+              className="border-0 bg-transparent text-right text-xl font-semibold focus-visible:ring-0 text-white"
               readOnly
             />
           </div>
@@ -119,18 +119,18 @@ const SwapCard = () => {
 
         {/* Swap Details */}
         {fromAmount && (
-          <div className="bg-blue-50 rounded-xl p-3 space-y-2 text-sm">
+          <div className="bg-blue-900/30 rounded-xl p-3 space-y-2 text-sm border border-blue-800/30">
             <div className="flex justify-between">
-              <span className="text-gray-600">Rate</span>
-              <span>1 {fromToken.symbol} = {calculateToAmount("1")} {toToken.symbol}</span>
+              <span className="text-gray-400">Rate</span>
+              <span className="text-white">1 {fromToken.symbol} = {calculateToAmount("1")} {toToken.symbol}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Slippage Tolerance</span>
-              <span>{slippage}%</span>
+              <span className="text-gray-400">Slippage Tolerance</span>
+              <span className="text-white">{slippage}%</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Network Fee</span>
-              <span>~$2.50</span>
+              <span className="text-gray-400">Network Fee</span>
+              <span className="text-white">~$2.50</span>
             </div>
           </div>
         )}
@@ -145,7 +145,7 @@ const SwapCard = () => {
         </Button>
 
         {/* Info */}
-        <div className="flex items-center gap-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-2">
+        <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-700/30 rounded-lg p-2 border border-gray-600/30">
           <Info size={12} />
           <span>By trading you agree to FlowSwap's Terms of Service</span>
         </div>
