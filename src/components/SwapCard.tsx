@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowUpDown, Settings, Info } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import TokenSelector from "./TokenSelector";
 import { useToast } from "@/hooks/use-toast";
 
@@ -13,6 +16,8 @@ const SwapCard = () => {
   const [fromToken, setFromToken] = useState({ symbol: "ETH", name: "Ethereum", icon: "⟠" });
   const [toToken, setToToken] = useState({ symbol: "USDC", name: "USD Coin", icon: "💵" });
   const [slippage, setSlippage] = useState("0.5");
+  const [customSlippage, setCustomSlippage] = useState("");
+  const [slippageDialogOpen, setSlippageDialogOpen] = useState(false);
   const { toast } = useToast();
 
   const handleSwapTokens = () => {
@@ -52,14 +57,80 @@ const SwapCard = () => {
     setToAmount(calculateToAmount(value));
   };
 
+  const handleSlippageChange = (value: string) => {
+    if (value === "custom") {
+      setSlippage(customSlippage || "1.0");
+    } else {
+      setSlippage(value);
+      setCustomSlippage("");
+    }
+  };
+
+  const handleCustomSlippageChange = (value: string) => {
+    setCustomSlippage(value);
+    setSlippage(value);
+  };
+
+  const presetSlippages = ["0.1", "0.5", "1.0"];
+
   return (
     <Card className="bg-gray-800/90 backdrop-blur-sm border border-gray-700 shadow-xl">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold text-white">Swap Tokens</h3>
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-gray-400 hover:text-white hover:bg-gray-700">
-            <Settings size={16} />
-          </Button>
+          <Dialog open={slippageDialogOpen} onOpenChange={setSlippageDialogOpen}>
+            <DialogTrigger asChild>
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-gray-400 hover:text-white hover:bg-gray-700">
+                <Settings size={16} />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-gray-800 border-gray-700 text-white">
+              <DialogHeader>
+                <DialogTitle>Slippage Settings</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label className="text-sm text-gray-300 mb-3 block">
+                    Slippage Tolerance
+                  </Label>
+                  <RadioGroup
+                    value={presetSlippages.includes(slippage) ? slippage : "custom"}
+                    onValueChange={handleSlippageChange}
+                    className="space-y-2"
+                  >
+                    {presetSlippages.map((preset) => (
+                      <div key={preset} className="flex items-center space-x-2">
+                        <RadioGroupItem value={preset} id={`slippage-${preset}`} />
+                        <Label htmlFor={`slippage-${preset}`} className="text-white cursor-pointer">
+                          {preset}%
+                        </Label>
+                      </div>
+                    ))}
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="custom" id="slippage-custom" />
+                      <Label htmlFor="slippage-custom" className="text-white cursor-pointer">
+                        Custom
+                      </Label>
+                      <Input
+                        value={customSlippage}
+                        onChange={(e) => handleCustomSlippageChange(e.target.value)}
+                        placeholder="1.0"
+                        className="w-20 bg-gray-700 border-gray-600 text-white text-sm"
+                        type="number"
+                        step="0.1"
+                        min="0"
+                        max="50"
+                      />
+                      <span className="text-gray-300 text-sm">%</span>
+                    </div>
+                  </RadioGroup>
+                </div>
+                <div className="text-xs text-gray-400 bg-gray-700/50 p-3 rounded-lg">
+                  <p>Slippage tolerance is the maximum amount of price movement you're willing to accept for your trade.</p>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </CardHeader>
       
