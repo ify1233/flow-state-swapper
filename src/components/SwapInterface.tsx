@@ -1,9 +1,11 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Droplets } from "lucide-react";
+import { Link } from "react-router-dom";
 import SwapCard from "./SwapCard";
 import LiquidityCard from "./LiquidityCard";
-import FaucetCard from "./FaucetCard";
 
 const SwapInterface = () => {
   return (
@@ -31,8 +33,16 @@ const SwapInterface = () => {
         </TabsContent>
       </Tabs>
       
-      {/* Faucet Card at the bottom */}
-      <FaucetCard />
+      {/* Link to Faucet Page */}
+      <Link to="/faucet">
+        <Button 
+          variant="outline" 
+          className="w-full flex items-center gap-2 bg-gray-800/50 border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white"
+        >
+          <Droplets className="h-4 w-4" />
+          Get Test Tokens from Faucet
+        </Button>
+      </Link>
     </div>
   );
 };
