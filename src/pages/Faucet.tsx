@@ -17,20 +17,18 @@ const Faucet = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black">
       {/* Header */}
       <div className="flex justify-between items-center p-6">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <Link to="/">
-            <Button variant="ghost" className="text-gray-400 hover:text-white">
+            <Button variant="ghost" className="text-gray-400 hover:text-white mr-4">
               <ArrowLeft size={20} />
               Back to Swap
             </Button>
           </Link>
-          <div className="flex items-center gap-3">
-            {/* FlowSwap Logo */}
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-xl">
-              <div className="text-white font-bold text-xl">FS</div>
-            </div>
-            <h1 className="text-2xl font-bold text-white">FlowSwap Faucet</h1>
+          {/* FlowSwap Logo */}
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-xl">
+            <div className="text-white font-bold text-xl">FS</div>
           </div>
+          <h1 className="text-2xl font-bold text-white">FlowSwap</h1>
         </div>
         
         {/* Connect Wallet Button */}
