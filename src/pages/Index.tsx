@@ -1,8 +1,9 @@
 
 import SwapInterface from "@/components/SwapInterface";
 import { Button } from "@/components/ui/button";
-import { Wallet } from "lucide-react";
+import { Wallet, Droplets } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -40,6 +41,19 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
+          {/* Link to Faucet Page - above the main heading */}
+          <div className="mb-6">
+            <Link to="/faucet">
+              <Button 
+                variant="outline" 
+                className="flex items-center gap-2 bg-purple-600/20 border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white transition-colors"
+              >
+                <Droplets className="h-4 w-4" />
+                Get Test Tokens from Faucet
+              </Button>
+            </Link>
+          </div>
+          
           <h2 className="text-4xl font-bold text-white mb-2">Trade with Zero Slippage</h2>
           <p className="text-lg text-gray-300">Swap tokens and provide liquidity on the Flow blockchain</p>
         </div>
